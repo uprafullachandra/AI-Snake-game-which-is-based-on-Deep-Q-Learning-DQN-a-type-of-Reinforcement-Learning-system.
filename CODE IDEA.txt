@@ -1,0 +1,46 @@
+# 🐍 Deep Q-Learning Snake AI
+
+This project is an implementation of the classic Snake game where the snake is controlled by an **AI agent** using **Deep Q-Learning** (DQN). The agent learns to play the game over time by trial and error and visualizes its progress.
+
+---
+
+## 🎮 Features
+
+- Pygame interface for real-time snake movement.
+- Reinforcement learning using Deep Q-Learning (DQN).
+- Live training score plot using Matplotlib.
+- Neural network built with PyTorch.
+
+---
+
+## 🧠 How It Works
+
+The AI follows the Reinforcement Learning cycle:
+
+1. **State**: Encoded representation of the game state (e.g., danger ahead, food direction).
+2. **Action**: One of three options — go straight, turn left, or turn right.
+3. **Reward**: +10 for food, -10 for dying, 0 otherwise.
+4. **Experience Replay**: Stores past experiences for stable learning.
+5. **Training**: Neural network approximates Q-values using the Bellman equation.
+
+---
+
+## 📦 Requirements
+
+Install dependencies:
+
+```bash
+pip install pygame torch matplotlib
+
+
+Step	Description
+1. State	The AI observes the game environment — position of the snake, food, danger zones, and current direction (11 binary values).
+2. Action	It chooses an action: [straight, right, left] based on a prediction or random exploration.
+3. Reward	It receives a reward after taking the action:
++10 for eating food,
+-10 for dying,
+0 otherwise.
+4. Experience	The (state, action, reward, next_state, done) tuple is stored in memory.
+5. Training	It trains a neural network using random batches from memory to learn Q-values (future rewards).
+6. Update	Over time, the AI gets better at predicting the best moves to maximize the score.
+
